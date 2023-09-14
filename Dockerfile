@@ -1,5 +1,8 @@
 FROM python:3.11.5-bookworm as builder-image
 
+ARG SSH_PASSWORD
+ARG SSH_PUBLIC_KEY
+
 COPY requirements.txt .
 RUN pip install --default-timeout=1000 --no-cache-dir -r requirements.txt
 
