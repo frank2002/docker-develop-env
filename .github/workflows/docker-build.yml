@@ -21,7 +21,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build --build-arg SSH_PASSWORD=${{ secrets.SSH_PASSWORD }} --build-arg SSH_PUBLIC_KEY="${{ secrets.SSH_PUBLIC_KEY }}" -t ${{ secrets.REPO_NAME }}:latest .
+        docker build --build-arg SSH_PASSWORD=${{ secrets.SSH_PASSWORD }} --build-arg SSH_PUBLIC_KEY="${{ secrets.SSH_PUBLIC_KEY }}" -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.REPO_NAME }}:latest .
 
     - name: Push Docker image
       run: |
