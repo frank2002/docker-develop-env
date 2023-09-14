@@ -11,11 +11,13 @@ RUN apt-get update -y \
     && apt-get install -y libaio1 vim nano openssh-server locales
 
 # Ensure proper permissions for SSH files
-RUN chmod 600 /root/.ssh/authorized_keys && chmod 700 /root/.ssh
 
 RUN echo "root:${SSH_PASSWORD}" | chpasswd
 
 RUN echo "${SSH_PUBLIC_KEY}" >> /root/.ssh/authorized_keys
+
+RUN chmod 600 /root/.ssh/authorized_keys && chmod 700 /root/.ssh
+
 
 # Uncomment the desired locale and generate it
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
